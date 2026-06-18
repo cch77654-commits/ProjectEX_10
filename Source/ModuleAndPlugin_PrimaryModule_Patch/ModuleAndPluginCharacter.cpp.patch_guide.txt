@@ -1,0 +1,21 @@
+// === ModuleAndPluginCharacter.cpp 에 추가할 내용 ===
+
+#include "TestActor.h"
+
+void AModuleAndPluginCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	// 캐릭터 앞 200 유닛 위치에 Test 모듈의 TestActor를 스폰
+	const FVector SpawnLocation = GetActorLocation() + GetActorForwardVector() * 200.f;
+	const FRotator SpawnRotation = GetActorRotation();
+
+	if (UWorld* World = GetWorld())
+	{
+		World->SpawnActor<ATestActor>(ATestActor::StaticClass(), SpawnLocation, SpawnRotation);
+	}
+}
+
+// 이 코드가 정상 실행되면 화면에 TestActor::BeginPlay()의
+// "Test 모듈의 TestActor가 정상적으로 스폰/실행되었습니다!" 메시지가 출력됩니다.
+// => 주 모듈(ModuleAndPlugin)이 Test 모듈을 정상적으로 참조/사용 중임을 확인.

@@ -1,0 +1,15 @@
+// === ModuleAndPluginCharacter.h 에 추가할 내용 ===
+//
+// 1) 상단 include 구역에 추가:
+//      #include "TestActor.h"
+//
+// 2) protected 또는 public 구역에 BeginPlay 오버라이드 선언 추가
+//    (Third Person 템플릿 캐릭터 클래스에 BeginPlay가 이미 없다면 새로 추가):
+//
+// protected:
+//     virtual void BeginPlay() override;
+//
+// 주의: 헤더에서 TestActor.h를 include 하므로,
+//       ModuleAndPlugin.Build.cs 의 PublicDependencyModuleNames 에
+//       "Test" 를 추가해야 컴파일이 됩니다.
+//       (Public Dependency: 헤더/소스 모두에서 쓰는 모듈이므로 Public에 추가)
